@@ -1,0 +1,26 @@
+{
+  "name": "teddy-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChristianVestre/teddy-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChristianVestre/teddy-backend/issues"
+  },
+  "homepage": "https://github.com/ChristianVestre/teddy-backend#readme",
+  "dependencies": {
+    "apollo-server": "^2.0.0",
+    "graphql": "^0.13.2",
+    "sequelize": "^4.38.0",
+    "sequelize-cockroachdb": "^1.0.3",
+    "uniqid": "^5.0.3"
+  }
+}
