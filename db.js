@@ -1,10 +1,14 @@
 const Sequelize = require('sequelize');
 
-var db = new Sequelize('teddy_database', 'maxroach', '', {
+var db = new Sequelize(process.env.DATABASE_URL,{
     dialect: 'postgres',
-    port: 26257,
-    logging: false
+    protocol: 'postgres',
+    port:match[4],
+    host:match[3],
+    logging: true
   });
+  
+ 
 
 const UserModel = db.define('usertable', {
   userid: { type: Sequelize.STRING, primaryKey:true },
@@ -15,7 +19,7 @@ const UserModel = db.define('usertable', {
   
 
 const ListModel = db.define('listtable', {
-  id: { type: Sequelize.STRING, primaryKey:true },
+  listid: { type: Sequelize.STRING, primaryKey:true },
   name: { type: Sequelize.STRING },
   userid:{ type: Sequelize.STRING },
   titlepicture: { type: Sequelize.STRING },
@@ -24,7 +28,7 @@ const ListModel = db.define('listtable', {
 },{timestamps: false,freezeTableName:true});
 
 const ListPartModel = db.define('listparttable', {
-    id: { type: Sequelize.STRING, primaryKey:true },
+    listpartid: { type: Sequelize.STRING, primaryKey:true },
     part_name: { type: Sequelize.STRING },
     content_url: {type: Sequelize.STRING},
     content_text: {type: Sequelize.TEXT},

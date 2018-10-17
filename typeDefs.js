@@ -7,7 +7,7 @@ type Query {
 }
 
 type List {
-    id: ID!
+    listid: ID!
     name: String
     userid: ID!
     listpartids: [String!]
@@ -35,7 +35,7 @@ enum ListType{
 
 
 type ListPart {
-    id: ID!
+    listpartid: ID!
     part_name: String!
     content_text: String!
     content_url: String!
