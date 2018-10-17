@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ChristianVestre/teddy-backend#readme",
   "dependencies": {
     "apollo-server": "^2.0.0",
+    "apollo-server-express": "^2.0.0-rc.12",
     "graphql": "^0.13.2",
     "sequelize": "^4.38.0",
     "sequelize-cockroachdb": "^1.0.3",

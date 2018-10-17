@@ -1,4 +1,4 @@
-const { ApolloServer,gql } = require('apollo-server');
+const ApolloServer = require('apollo-server');
 const typeDefs = require('./typeDefs.js')
 const resolvers = require('./resolvers.js')
 const database = require('./db.js')
@@ -11,6 +11,6 @@ server = new ApolloServer ({
     }
 })
 
-server.listen({ port: process.env.PORT || 5000 }).then(({url}) => {
+server.listen().then(({url}) => {
     console.log(`🚀 Server ready at ${url}`)
 });
