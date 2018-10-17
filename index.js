@@ -8,7 +8,14 @@ server = new ApolloServer ({
     resolvers,
     context:{
         db: database
-    }
+    },
+    playground: {
+		endpoint: `http://localhost:4000/graphql`,
+		settings: {
+      		'editor.theme': 'dark'
+    	}
+	},
+	introspection:true
 })
 
 server.listen({ port: process.env.PORT || 5000 }).then(({url}) => {

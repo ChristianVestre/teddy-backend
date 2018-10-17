@@ -5,7 +5,6 @@ var db = new Sequelize(process.env.DATABASE_URL || 'postgres://wnvjzneauorqmv:be
     dialectOptions: {
         ssl: true
       },
-    protocol: 'postgres',
     logging: false
   });
   
