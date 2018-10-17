@@ -10,7 +10,7 @@ server = new ApolloServer ({
         db: database
     },
     playground: {
-		endpoint: `http://localhost:4000/graphql`,
+		endpoint: `/graphql`,
 		settings: {
       		'editor.theme': 'dark'
     	}
