@@ -2,13 +2,13 @@ const {gql} = require('apollo-server')
 typeDefs = gql`
 
 type Query {
-    getList(id:ID):[List]
+    getList(listid:ID):[List]
     getUser(userid:ID):[User]
 }
 
 type List {
     listid: ID!
-    name: String
+    listname: String
     userid: ID!
     listpartids: [String!]
     titlepicture: String
@@ -36,9 +36,9 @@ enum ListType{
 
 type ListPart {
     listpartid: ID!
-    part_name: String!
-    content_text: String!
-    content_url: String!
+    partname: String!
+    contenttext: String!
+    contenturl: String!
     parentlistids: [String]
     listid:ID
     type:ListType!

@@ -5,18 +5,18 @@ var uniqid = require('uniqid');
 const resolvers = {
     Query: {
  //       getList(_,args) {return imports.ListModel.findAll({ where:{id:args.id}})}
-        getList(_,args,context) {return context.db.ListModel.findAll({where:{id:args.listid}})},
+        getList(_,args,context) {return context.db.ListModel.findAll({where:{listid:args.listid}})},
         getUser(_,args,context) {return context.db.UserModel.findAll({where:{userid:args.userid}})},
     },
     List: {
-        getListParts(parent,_,context) {return context.db.ListPartModel.findAll({ where:{id:parent.dataValues.listpartids}})},
+        getListParts(parent,_,context) {return context.db.ListPartModel.findAll({ where:{listpartid:parent.dataValues.listpartids}})},
         addListPart(parent,args,context) {
             return context.db.ListPartModel.sync().then(function () {
                 return context.db.ListPartModel.create({
                   listpartid: uniqid(),
-                  part_name: args.part_name,
-                  content_url: args.content_url,
-                  content_text: args.content_text,
+                  partname: args.partname,
+                  contenturl: args.contenturl,
+                  contenttext: args.contenttext,
                   parentlistids: context.db.Sequelize.fn('array_append',  context.db.Sequelize.col('parentlistids'), parent.dataValues.listid),
                   type:args.type,
                   tags:context.db.Sequelize.fn('array_append',  context.db.Sequelize.col('tags'), args.tags),
@@ -25,13 +25,13 @@ const resolvers = {
                     context.db.ListModel.update({
                         listpartids: context.db.Sequelize.fn('array_append',  context.db.Sequelize.col('listpartids'), data.dataValues.listid)
                       }, {
-                        where: {id:parent.dataValues.id }
+                        where: {listpartid:parent.dataValues.id }
                     });
                     //todo create user table and user model
                     context.db.UserModel.update({
                         listids: context.db.Sequelize.fn('array_append',  context.db.Sequelize.col('listids'), data.dataValues.listid)
                     }, {
-                        where: {id:parent.dataValues.userId }
+                        where: {listpartid: parent.dataValues.userId }
                     });
                     return data
                 });
