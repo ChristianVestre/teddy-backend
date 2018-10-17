@@ -3,7 +3,9 @@ const typeDefs = require('./typeDefs.js')
 const resolvers = require('./resolvers.js')
 const database = require('./db.js')
 const graphqlPath = process.env.GRAPHQL || 'graphql'
+const app = express()
 
+app.use(cors())
 
 server = new ApolloServer ({
     typeDefs,
