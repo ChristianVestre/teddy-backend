@@ -23,15 +23,15 @@ const resolvers = {
                   listid:null//TODO
                 }).then(function (data) {
                     context.db.ListModel.update({
-                        listpartids: context.db.Sequelize.fn('array_append',  context.db.Sequelize.col('listpartids'), data.dataValues.listid)
+                        listpartids: context.db.Sequelize.fn('array_append',  context.db.Sequelize.col('listpartids'), data.dataValues.listpartid)
                       }, {
-                        where: {listpartid:parent.dataValues.id }
+                        where: {listid:parent.dataValues.listid }
                     });
                     //todo create user table and user model
                     context.db.UserModel.update({
                         listids: context.db.Sequelize.fn('array_append',  context.db.Sequelize.col('listids'), data.dataValues.listid)
                     }, {
-                        where: {listpartid: parent.dataValues.userId }
+                        where: {listid: parent.dataValues.userId }
                     });
                     return data
                 });
@@ -39,7 +39,7 @@ const resolvers = {
         },
     },
     User: {
-        getLists(parent,_,context) {return context.db.ListModel.findAll({ where:{id:parent.dataValues.listids}})},
+        getLists(parent,_,context) {return context.db.ListModel.findAll({ where:{listid:parent.dataValues.listids}})},
     },
     Mutation: {
         addList(_,args,context) {
